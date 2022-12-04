@@ -40,7 +40,7 @@ $ sudo apt install --yes nginx-extras
 
 To utilize the Nginx file we must set it up by 'cd /etc/nginx/sites-enabled' and then 'sudo "${EDITOR:-vi}" tutorial' (as described here: https://ubuntu.com/tutorials/install-and-configure-nginx#4-setting-up-virtual-host) into the Linux terminal. The second part will allow us to use the Linux terminal to edit the contents of the tutorial file which hosts the configuration of our Nginx settings. The named 'tutorial' Nginx configuration file and directories may need to be created before hand, see (https://ubuntu.com/tutorials/install-and-configure-nginx#1-overview) for more details on this process. See this (https://nginx.org/en/docs/http/ngx_http_core_module.html#directives) for explanations of Nginx configuration properties including ones like 'server_name.'
 ```
-upstream wordle { server  127.0.0.1:3000; server  127.0.0.1:3001; server 127.0.0.1:3002; }
+upstream wordle { server  127.0.0.1:3200; server  127.0.0.1:3300; server 127.0.0.1:3400; }
 
 server {
        listen 80;
@@ -49,7 +49,7 @@ server {
        server_name tuffix-vm;
 	
 	location /login {
-		    proxy_pass http://127.0.0.1:3100/login;	
+		    proxy_pass http://127.0.0.1:3000/login;	
 	}
         
 	location / {
@@ -60,7 +60,7 @@ server {
 	
     location = /auth {
             internal;
-            proxy_pass              http://127.0.0.1:3100/login;
+            proxy_pass              http://127.0.0.1:3000/login;
             proxy_pass_request_body off;
             proxy_set_header        Content-Length "";
             proxy_set_header        X-Original-URI $request_uri;
