@@ -95,6 +95,13 @@ $ ./bin/init.sh
 
 ## Database Structure
 
+## Redis Database
+Run the redis database with the following command: redis-server
+To access the top list make the following call: http -a user1:001 GET http://tuffix-vm/leaderboard
+```
+	$ sudo apt install --yes python3-hiredis
+```
+
 #### Users Database:
 It contains one table.
 - `user`
